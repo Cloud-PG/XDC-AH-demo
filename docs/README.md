@@ -2,7 +2,7 @@
 
 ## Deploy K8s on any cloud with DODAS-TS
 
-Although is not the only way, I put here the references and contacts for whoever is interested in deploy K8s on any cloud provider with a unique configuration file. The procedure uses PaaS orchestration from DODAS thematic service (EOSC-Hub)
+Although is not the only way, I put here the references and contacts for whoever is interested in deploy K8s on any cloud provider with a unique configuration file. The procedure uses PaaS Orchestrator for K8s deployment.
 
 - [User Guide](https://dodas-ts.github.io/dodas-doc/)
 - [K8s template](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/DODAS-TS/kube_deploy.yml)
@@ -239,6 +239,10 @@ spec:
 
 For time reason of the demo a pre-installed origin server will be used as remote data source. On that server has been put a file called `test.txt`
 
+After the complete deployment, all the deployments should be green as in the figure below.
+
+![k8s](img/k8s.png)
+
 We are going to do the following:
 
 - look briefly at redirector logs, to see XCache servers registering themselves
@@ -252,8 +256,11 @@ We are going to do the following:
   - the transfer speed should look a bit better indeed
 - scale up and down the cluster dynamically
 
-Backup:
+Additional:
 
 - put another file on the fake origin and see where it land when requested
+- Mesos/Marathon equivalent
 - copy file from XCACHE@CNAF and look at the [monitor page](https://193.204.89.68:3000/d/gZht3p4iz/infn-xcache-monitor)
   - need voms proxy ready on a vm
+
+![k8s](img/graphana.png)
