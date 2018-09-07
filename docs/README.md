@@ -8,7 +8,12 @@ Although is not the only way, I put here the references and contacts for whoever
 - [K8s template](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/DODAS-TS/kube_deploy.yml)
 - [XCache CMS templates](https://github.com/Cloud-PG/docker-images/tree/xcache/xrd-proxy)
 
+
 ## XCache local deployment for cloud resources
+
+- K8s pre-installed resources:
+  - [TSystem](https://160.44.198.123:30443/#!/login)
+  - [cloud@CNAF](https://131.154.96.89:30443/#!/login)
 
 ### What is going to be deployed?
 
