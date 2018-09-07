@@ -22,6 +22,7 @@ You can find below the yaml configuration files for the complete deployment on K
 
 ### Deploy K8d XCache service
 
+[xcache_service.yaml](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/k8s/xcache_service.yaml)
 ``` yaml
 kind: Service
 apiVersion: v1
@@ -46,6 +47,8 @@ spec:
 ```
 
 ### Deploy XCache redirector
+
+[redir-deployment.yaml](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/k8s/redir-deployment.yaml)
 
 ``` yaml
 apiVersion: apps/v1
@@ -94,6 +97,8 @@ spec:
 ```
 
 ### Deploy XCache servers
+
+[cache-deployment.yaml](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/k8s/cache-deployment.yaml)
 
 ``` yaml
 apiVersion: apps/v1
@@ -177,6 +182,8 @@ spec:
 
 ### Deploy a client node + fake origin server
 
+[client_server-deployment.yaml](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/k8s/client_server-deployment.yaml)
+
 ``` yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -217,6 +224,8 @@ spec:
 ```
 
 ### Service for using fake origin server
+
+[origin_service.yaml](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/k8s/origin_service.yaml)
 
 ``` yaml
 kind: Service
