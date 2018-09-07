@@ -8,14 +8,13 @@ Although is not the only way, I put here the references and contacts for whoever
 - [K8s template](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/DODAS-TS/kube_deploy.yml)
 - [XCache CMS templates](https://github.com/Cloud-PG/docker-images/tree/xcache/xrd-proxy)
 
-
 ## XCache local deployment for cloud resources
 
 - K8s pre-installed resources:
   - [TSystem](https://160.44.198.123:30443/#!/login)
   - [cloud@CNAF](https://131.154.96.89:30443/#!/login)
 
-### What is going to be deployed?
+### What is going to be deployed
 
 The following example will deploy one XCache server per VM + a unique XCache federator and an instance running a plain server from where the xrdcp commands can be tested.
 You can find below the yaml configuration files for the complete deployment on K8s and, at the bottom, a summary of what is going to be demo-ed (other than deployment).
@@ -23,6 +22,7 @@ You can find below the yaml configuration files for the complete deployment on K
 ### Deploy K8d XCache service
 
 [xcache_service.yaml](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/k8s/xcache_service.yaml)
+
 ``` yaml
 kind: Service
 apiVersion: v1
@@ -101,6 +101,7 @@ spec:
 [cache-deployment.yaml](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/k8s/cache-deployment.yaml)
 
 ``` yaml
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -128,7 +129,6 @@ spec:
       - name: cache
         imagePullPolicy: Always
         args:
-        - --nogrid
         - --proxy
         - --health_port
         - "8088"
@@ -148,22 +148,24 @@ spec:
         - name: N_PREFETCH
           value: "0"
         - name: ORIGIN_HOST
-          value: 80.158.5.211
+          value: xrootd-cms.infn.it
         - name: ORIGIN_XRD_PORT
-          value: "32294"
+          value: "1094"
         - name: REDIR_CMSD_PORT
           value: "31213"
         - name: REDIR_HOST
           value: xcache-service.default.svc.cluster.local
         - name: STREAMS
           value: "256"
-        image: cloudpg/xrootd-proxy:xcache
+        image: cloudpg/xrootd-proxy:demo
         livenessProbe:
           exec:
             command:
             - curl
             - -f
             - http://localhost:8088/check_health
+          initialDelaySeconds: 300
+          periodSeconds: 60
         ports:
         - containerPort: 32294
         - containerPort: 31113
@@ -223,27 +225,6 @@ spec:
   replicas: 1
 ```
 
-### Service for using fake origin server
-
-[origin_service.yaml](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/k8s/origin_service.yaml)
-
-``` yaml
-kind: Service
-apiVersion: v1
-metadata:
-  name: origin-service
-spec:
-  type: NodePort
-  selector:
-    app: origin
-  ports:
-  - protocol: TCP
-    name: xrootd
-    port: 1194
-    targetPort: 1194
-    nodePort: 31194
-```
-
 ### Demo tests
 
 For time reason of the demo a pre-installed origin server will be used as remote data source. On that server has been put a file called `test.txt`
@@ -256,7 +237,7 @@ We are going to do the following:
 
 - look briefly at redirector logs, to see XCache servers registering themselves
 - from the client node request a copy of the `test.txt` to the XCache redirector
-  - `xrdcp -f -d2 root://xcache-service.default.svc.cluster.local//test.txt .`
+  - `xrdcp -f -d2 root://xcache-service.default.svc.cluster.local//store/mc/RunIIFall17DRPremix/DStarToD0Pi_D0KPi_DStarFilter_TuneCP5_13TeV-pythia8-evtgen/AODSIM/94X_mc2017_realistic_v10-v1/70000/FAC9CE9A-40EE-E711-AF02-E0071B7A8560.root /dev/null`
   - in few words at this point the redirector is going to check in any cache server has it on disk
     - if any, will make client contact that server directly
     - otherwise it will choose via round robin a cache server that will work as a proxy for the current client request, but caching data meanwhile

@@ -26,7 +26,6 @@ spec:
       - name: cache
         imagePullPolicy: Always
         args:
-        - --nogrid
         - --proxy
         - --health_port
         - "8088"
@@ -46,22 +45,24 @@ spec:
         - name: N_PREFETCH
           value: "0"
         - name: ORIGIN_HOST
-          value: 80.158.5.211
+          value: xrootd-cms.infn.it
         - name: ORIGIN_XRD_PORT
-          value: "32294"
+          value: "1094"
         - name: REDIR_CMSD_PORT
           value: "31213"
         - name: REDIR_HOST
           value: xcache-service.default.svc.cluster.local
         - name: STREAMS
           value: "256"
-        image: cloudpg/xrootd-proxy:xcache
+        image: cloudpg/xrootd-proxy:demo
         livenessProbe:
           exec:
             command:
             - curl
             - -f
             - http://localhost:8088/check_health
+          initialDelaySeconds: 300
+          periodSeconds: 60
         ports:
         - containerPort: 32294
         - containerPort: 31113
