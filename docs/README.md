@@ -241,7 +241,7 @@ For time reason of the demo a pre-installed origin server will be used as remote
 
 After the complete deployment, all the deployments should be green as in the figure below.
 
-![k8s](img/k8s.png)
+[![k8s](img/k8s.png)](https://cloud-pg.github.io/XDC-HA-demo/img/k8s.png)
 
 We are going to do the following:
 
@@ -263,4 +263,4 @@ Additional:
 - copy file from XCACHE@CNAF and look at the [monitor page](https://193.204.89.68:3000/d/gZht3p4iz/infn-xcache-monitor)
   - need voms proxy ready on a vm
 
-![k8s](img/graphana.png)
+[![k8s](img/graphana.png)](https://cloud-pg.github.io/XDC-HA-demo/img/graphana.png)
