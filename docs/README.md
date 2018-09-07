@@ -17,7 +17,8 @@ Although is not the only way, I put here the references and contacts for whoever
 
 ### What is going to be deployed?
 
-The following example will deploy ...
+The following example will deploy one XCache server per VM + a unique XCache federator and an instance running a plain server from where the xrdcp commands can be tested.
+You can find below the yaml configuration files for the complete deployment on K8s and, at the bottom, a summary of what is going to be demo-ed (other than deployment).
 
 ### Deploy K8d XCache service
 
@@ -174,11 +175,67 @@ spec:
 
 ```
 
-### Deploy a client node
+### Deploy a client node + fake origin server
 
-### Deploy an origin server
+``` yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-pod
+  labels:
+    app: origin
+spec:
+  template:
+    metadata:
+      labels:
+        app: origin
+    spec:
+      containers:
+      - name: clientAndServer
+        imagePullPolicy: Always
+        args:
+        - --nogrid
+        - --config
+        - /etc/xrootd/xrd_test_origin.conf
+        - --health_port
+        - "8080"
+        image: cloudpg/xrootd-proxy:xcache
+        livenessProbe:
+          exec:
+            command:
+            - curl
+            - -f
+            - http://localhost:8080/check_health
+        ports:
+        - containerPort: 1194
 
-### Testing functionalities
+  selector:
+    matchLabels:
+      app: origin
+
+  replicas: 1
+```
+
+### Service for using fake origin server
+
+``` yaml
+kind: Service
+apiVersion: v1
+metadata:
+  name: origin-service
+spec:
+  type: NodePort
+  selector:
+    app: origin
+  ports:
+  - protocol: TCP
+    name: xrootd
+    port: 1194
+    targetPort: 1194
+    nodePort: 31194
+```
+
+### Demo tests
 
 For time reason of the demo a pre-installed origin server will be used as remote data source. On that server has been put a file called `test.txt`
 
@@ -195,4 +252,8 @@ We are going to do the following:
   - the transfer speed should look a bit better indeed
 - scale up and down the cluster dynamically
 
-- put another file on the origin and see where it land when requested
+Backup:
+
+- put another file on the fake origin and see where it land when requested
+- copy file from XCACHE@CNAF and look at the [monitor page](https://193.204.89.68:3000/d/gZht3p4iz/infn-xcache-monitor)
+  - need voms proxy ready on a vm

@@ -17,5 +17,7 @@ spec:
     port: 31213
     targetPort: 31213
     nodePort: 31213
-
+#  type: LoadBalancer
+#  externalIPs:
+#  - 160.44.198.123
 ---

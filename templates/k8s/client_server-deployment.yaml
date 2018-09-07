@@ -1,0 +1,38 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-pod
+  labels:
+    app: node
+spec:
+  template:
+    metadata:
+      labels:
+        app: node
+    spec:
+      containers:
+      - name: clientAndServer
+        imagePullPolicy: Always
+        args:
+        - --nogrid
+        - --config
+        - /etc/xrootd/xrd_test_origin.conf
+        - --health_port
+        - "8080"
+        image: cloudpg/xrootd-proxy:xcache
+        livenessProbe:
+          exec:
+            command:
+            - curl
+            - -f
+            - http://localhost:8080/check_health
+        ports:
+        - containerPort: 1194
+
+  selector:
+    matchLabels:
+      app: origin
+
+  replicas: 1
