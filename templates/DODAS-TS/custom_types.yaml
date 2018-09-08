@@ -1297,7 +1297,7 @@ node_types:
   tosca.nodes.indigo.MesosMaster:
     derived_from: tosca.nodes.indigo.LRMS.FrontEnd.Mesos
 
-  tosca.nodes.indigo.CmsServices:
+  tosca.nodes.indigo.XCache:
     derived_from: tosca.nodes.SoftwareComponent
     interfaces:
       Standard:
