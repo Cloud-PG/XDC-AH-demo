@@ -81,7 +81,7 @@ spec:
         - name: REDIR_CMSD_PORT
           value: "31213"
         - name: REDIR_HOST
-          value: xcache-service.default.svc.cluster.local 
+          value: xcache-service.default.svc.cluster.local
         - name: REDIR_XRD_PORT
           value: "1094"
         image: cloudpg/xrootd-proxy:xcache
