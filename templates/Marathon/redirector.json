@@ -1,0 +1,67 @@
+{
+    "id": "/redirector",
+    "cmd": null,
+    "cpus": 1,
+    "mem": 512,
+    "disk": 0,
+    "instances": 1,
+    "constraints": [
+        [
+        "hostname",
+        "UNIQUE"
+        ]
+    ],
+    "acceptedResourceRoles": [
+        "*"
+    ],
+    "container": {
+        "type": "DOCKER",
+        "volumes": [],
+        "docker": {
+        "image": "cloudpg/xrootd-proxy:xcache",
+        "network": "BRIDGE",
+        "portMappings": [
+            {
+                "containerPort": 31213,
+                "hostPort": 0,
+                "labels": {},
+                "protocol": "tcp",
+                "servicePort": 31213
+            },
+            {
+                "containerPort": 31094,
+                "hostPort": 0,
+                "labels": {},
+                "protocol": "tcp",
+                "servicePort": 31094
+            }
+        ],
+        "privileged": true,
+        "parameters": [],
+        "forcePullImage": true
+        }
+    },
+    "env": {
+        "CACHE_LOG_LEVEL": "debug",
+        "REDIR_CMSD_PORT": "31213",
+        "REDIR_XRD_PORT": "31094",
+        "REDIR_HOST": "0.0.0.0"
+    },
+    "healthChecks": [
+        {
+        "gracePeriodSeconds": 300,
+        "intervalSeconds": 60,
+        "timeoutSeconds": 20,
+        "maxConsecutiveFailures": 3,
+        "delaySeconds": 15,
+        "command": {
+            "value": "curl -f -X GET http://localhost/check_health"
+        },
+        "protocol": "COMMAND"
+        }
+    ],
+    "args": [
+        "--redirector"
+    ]
+}
+  

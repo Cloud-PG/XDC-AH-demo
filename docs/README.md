@@ -1,12 +1,13 @@
 # XDC HA Meeting: XCache Demo
 
-## Deploy K8s on any cloud with DODAS-TS
+## Demo architecture: deployment on dynamic resources
 
-Although is not the only way, I put here the references and contacts for whoever is interested in deploy K8s on any cloud provider with a unique configuration file. The procedure uses PaaS Orchestrator for K8s deployment.
 
-- [User Guide](https://dodas-ts.github.io/dodas-doc/)
-- [K8s template](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/DODAS-TS/kube_deploy.yml)
-- [XCache CMS templates](https://github.com/Cloud-PG/docker-images/tree/xcache/xrd-proxy)
+### What is going to be deployed
+
+The following example will deploy one XCache server per VM + a unique XCache federator and an instance running a plain server from where the xrdcp commands can be tested.
+You can find below the yaml configuration files for the complete deployment on K8s and, at the bottom, a summary of what is going to be demo-ed (other than deployment).
+
 
 ## XCache local deployment for cloud resources
 
@@ -14,10 +15,6 @@ Although is not the only way, I put here the references and contacts for whoever
   - [TSystem](https://160.44.198.123:30443/#!/login)
   - [cloud@CNAF](https://131.154.96.89:30443/#!/login)
 
-### What is going to be deployed
-
-The following example will deploy one XCache server per VM + a unique XCache federator and an instance running a plain server from where the xrdcp commands can be tested.
-You can find below the yaml configuration files for the complete deployment on K8s and, at the bottom, a summary of what is going to be demo-ed (other than deployment).
 
 ### Deploy K8d XCache service
 
@@ -248,9 +245,16 @@ We are going to do the following:
 
 Additional:
 
-- put another file on the fake origin and see where it land when requested
-- Mesos/Marathon equivalent
+- Mesos/Marathon equivalent with WN
 - copy file from XCACHE@CNAF and look at the [monitor page](https://193.204.89.68:3000/d/gZht3p4iz/infn-xcache-monitor)
   - need voms proxy ready on a vm
 
 [![k8s](img/graphana.png)](https://cloud-pg.github.io/XDC-HA-demo/img/graphana.png)
+
+
+## Deploy K8s on any cloud with DODAS-TS
+
+Although is not the only way, I put here the references and contacts for whoever is interested in deploy K8s on any cloud provider with a unique configuration file. The procedure uses PaaS Orchestrator for K8s deployment.
+
+- [K8s template](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/DODAS-TS/kube_deploy.yml)
+- [XCache CMS templates](https://github.com/Cloud-PG/docker-images/tree/xcache/xrd-proxy)

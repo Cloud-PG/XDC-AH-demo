@@ -1,0 +1,37 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+  - name: start xcache redirector
+    run_once: true
+    uri:
+      url: "{{marathon_protocol}}://marathon.service.consul:{{marathon_port}}/v2/apps/xcacheredir"
+      user: "{{marathon_username}}"
+      password: "{{marathon_password}}"
+      validate_certs: "no"
+      method: PUT
+      HEADER_Content-Type: "application/json"
+      body: "{{ lookup('template', 'https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/Marathon/redirector.json') }}"
+      body_format: json
+    register: result
+    until: result.status == 200
+    retries: 10
+    delay: 20
+    changed_when: false
+
+  - name: start xcache server
+    run_once: true
+    uri:
+      url: "{{marathon_protocol}}://marathon.service.consul:{{marathon_port}}/v2/apps/xcacheserver"
+      user: "{{marathon_username}}"
+      password: "{{marathon_password}}"
+      validate_certs: "no"
+      method: PUT
+      HEADER_Content-Type: "application/json"
+      body: "{{ lookup('template', 'https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/Marathon/server.json') }}"
+      body_format: json
+    register: result
+    until: result.status == 200
+    retries: 10
+    delay: 20
+    changed_when: false
