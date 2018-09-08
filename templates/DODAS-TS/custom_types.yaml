@@ -1302,7 +1302,7 @@ node_types:
     interfaces:
       Standard:
         start:
-          implementation: https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/template/Marathon/deploy-cache.yml
+          implementation: https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/Marathon/deploy-cache.yml
     requirements:
       - host:
           capability: tosca.capabilities.indigo.MesosMaster
