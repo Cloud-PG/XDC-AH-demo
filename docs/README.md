@@ -2,19 +2,28 @@
 
 ## Demo architecture: deployment on dynamic resources
 
+## Objectives
 
-### What is going to be deployed
+Demostrate an automatic deployment of a XCache cluster on cloud providers to be used for opportunistic computing resource. The context in which thi solution is being tested is  the CMS experiment.
+
+## What is going to be deployed
 
 The following example will deploy one XCache server per VM + a unique XCache federator and an instance running a plain server from where the xrdcp commands can be tested.
 You can find below the yaml configuration files for the complete deployment on K8s and, at the bottom, a summary of what is going to be demo-ed (other than deployment).
 
+### Setup schema
 
-## XCache local deployment for cloud resources
+TODO
+
+## XCache local deployment for opportunistic cloud resources
+
+The demo will make use of K8s, allowing to run the whole deployment step by step in a simpler way.
 
 - K8s pre-installed resources:
   - [TSystem](https://160.44.198.123:30443/#!/login)
   - [cloud@CNAF](https://131.154.96.89:30443/#!/login)
 
+N.B. the whole set of intermediate step are executed manually just as demostrator. TOSCA templates for K8s and Mesos/Marathon end to end deployment are available for real case scenario.
 
 ### Deploy K8d XCache service
 
