@@ -1299,10 +1299,16 @@ node_types:
 
   tosca.nodes.indigo.XCache:
     derived_from: tosca.nodes.SoftwareComponent
+    properties:
+      proxycache_host:
+        type: string
+        required: yes
     interfaces:
       Standard:
         start:
           implementation: https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/Marathon/deploy-cache.yml
+          inputs:
+            cms_config_proxycache_host: { get_property: [ SELF, proxycache_host ] }
     requirements:
       - host:
           capability: tosca.capabilities.indigo.MesosMaster

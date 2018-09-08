@@ -137,7 +137,7 @@ topology_template:
         iam_client_secret: { get_input: iam_client_secret }
         master_ips: { get_attribute: [ mesos-master-server, private_address ] }
         cms_local_site: { get_input: cms_local_site }
-        #cms_input_protocol: onedata
+        cms_input_protocol: "xrootd"
       requirements:
         - host: mesos_master
 
