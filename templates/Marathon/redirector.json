@@ -2,7 +2,7 @@
     "id": "/redirector",
     "cmd": null,
     "cpus": 1,
-    "mem": 512,
+    "mem": 256,
     "disk": 0,
     "instances": 1,
     "constraints": [

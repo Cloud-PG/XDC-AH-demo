@@ -13,7 +13,7 @@ You can find below the yaml configuration files for the complete deployment on K
 
 ### Setup schema
 
-TODO
+TODO: local setup + alternative is: read from regional cache.
 
 ## XCache local deployment for opportunistic cloud resources
 
@@ -23,7 +23,7 @@ The demo will make use of K8s, allowing to run the whole deployment step by step
   - [TSystem](https://160.44.198.123:30443/#!/login)
   - [cloud@CNAF](https://131.154.96.89:30443/#!/login)
 
-N.B. the whole set of intermediate step are executed manually just as demostrator. TOSCA templates for K8s and Mesos/Marathon end to end deployment are available for real case scenario.
+N.B. the whole set of intermediate step are executed manually just as demostrator. TOSCA templates for [K8s](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/DODAS-TS/kube_deploy.yml) and [Mesos/Marathon](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/DODAS-TS/cms_cluster.yml) end to end deployment are available for real case scenario.
 
 ### Deploy K8d XCache service
 
@@ -254,16 +254,20 @@ We are going to do the following:
 
 Additional:
 
-- Mesos/Marathon equivalent with WN
+- [Mesos/Marathon equivalent with WN](http://90.147.75.180:8080/ui/#/apps)
+
+[![marathon](img/marathon.png)](https://cloud-pg.github.io/XDC-HA-demo/img/marathon.png)
+
 - copy file from XCACHE@CNAF and look at the [monitor page](https://193.204.89.68:3000/d/gZht3p4iz/infn-xcache-monitor)
+
   - need voms proxy ready on a vm
 
 [![k8s](img/graphana.png)](https://cloud-pg.github.io/XDC-HA-demo/img/graphana.png)
-
 
 ## Deploy K8s on any cloud with DODAS-TS
 
 Although is not the only way, I put here the references and contacts for whoever is interested in deploy K8s on any cloud provider with a unique configuration file. The procedure uses PaaS Orchestrator for K8s deployment.
 
 - [K8s template](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/DODAS-TS/kube_deploy.yml)
-- [XCache CMS templates](https://github.com/Cloud-PG/docker-images/tree/xcache/xrd-proxy)
+- [Marathon CMS cluster computing + XCache](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/DODAS-TS/cms_cluster)
+- [XCache CMS repository](https://github.com/Cloud-PG/docker-images/tree/xcache/xrd-proxy)

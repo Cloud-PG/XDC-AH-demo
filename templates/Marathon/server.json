@@ -34,8 +34,8 @@
     },
     "env": {
         "CACHE_LOG_LEVEL": "debug",
-        "REDIR_CMSD_PORT": "31213",
-        "REDIR_HOST": "{{cms_config_proxycache_host}}",
+        "REDIR_CMSD_PORT": "31274",
+        "REDIR_HOST": "172.30.89.176",
         "ORIGIN_HOST": "xrootd-cms.infn.it",
         "ORIGIN_XRD_PORT": "1094",
         "BLOCK_SIZE": "512k",
