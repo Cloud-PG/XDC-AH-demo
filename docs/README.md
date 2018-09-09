@@ -1,19 +1,19 @@
 # XDC HA Meeting: XCache Demo
 
-## Demo architecture: deployment on dynamic resources
+## Automated deployment on dynamic resources
 
-## Objectives
+### Objectives
 
 Demostrate an automatic deployment of a XCache cluster on cloud providers to be used for opportunistic computing resource. The context in which thi solution is being tested is  the CMS experiment.
 
-## What is going to be deployed
+### What is going to be deployed
 
 The following example will deploy one XCache server per VM + a unique XCache federator and an instance running a plain server from where the xrdcp commands can be tested.
 You can find below the yaml configuration files for the complete deployment on K8s and, at the bottom, a summary of what is going to be demo-ed (other than deployment).
 
 ### Setup schema
 
-TODO: local setup + alternative is: read from regional cache.
+![design](img/design.png)
 
 ## XCache local deployment for opportunistic cloud resources
 
@@ -264,10 +264,3 @@ Additional:
 
 [![k8s](img/graphana.png)](https://cloud-pg.github.io/XDC-HA-demo/img/graphana.png)
 
-## Deploy K8s on any cloud with DODAS-TS
-
-Although is not the only way, I put here the references and contacts for whoever is interested in deploy K8s on any cloud provider with a unique configuration file. The procedure uses PaaS Orchestrator for K8s deployment.
-
-- [K8s template](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/DODAS-TS/kube_deploy.yml)
-- [Marathon CMS cluster computing + XCache](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/DODAS-TS/cms_cluster)
-- [XCache CMS repository](https://github.com/Cloud-PG/docker-images/tree/xcache/xrd-proxy)
