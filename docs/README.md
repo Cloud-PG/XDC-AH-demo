@@ -13,7 +13,7 @@ You can find below the yaml configuration files for the complete deployment on K
 
 ### Setup schema
 
-![design](img/design.png)
+[![design](img/design.png)](https://cloud-pg.github.io/XDC-HA-demo/img/design.png)
 
 ## XCache local deployment for opportunistic cloud resources
 
