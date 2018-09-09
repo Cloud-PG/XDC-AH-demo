@@ -1,4 +1,4 @@
-# XDC HA Meeting: XCache Demo
+# XDC AH Meeting: XCache Demo
 
 ## Automated deployment on dynamic resources
 
@@ -13,7 +13,7 @@ You can find below the yaml configuration files for the complete deployment on K
 
 ### Setup schema
 
-[![design](img/design.png)](https://cloud-pg.github.io/XDC-HA-demo/img/design.png)
+[![design](img/design.png)](https://cloud-pg.github.io/XDC-AH-demo/img/design.png)
 
 ## XCache local deployment for opportunistic cloud resources
 
@@ -23,11 +23,11 @@ The demo will make use of K8s, allowing to run the whole deployment step by step
   - [TSystem](https://160.44.198.123:30443/#!/login)
   - [cloud@CNAF](https://131.154.96.89:30443/#!/login)
 
-N.B. the whole set of intermediate step are executed manually just as demostrator. TOSCA templates for [K8s](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/DODAS-TS/kube_deploy.yml) and [Mesos/Marathon](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/DODAS-TS/cms_cluster.yml) end to end deployment are available for real case scenario.
+N.B. the whole set of intermediate step are executed manually just as demostrator. TOSCA templates for [K8s](https://raw.githubusercontent.com/Cloud-PG/XDC-AH-demo/master/templates/DODAS-TS/kube_deploy.yml) and [Mesos/Marathon](https://raw.githubusercontent.com/Cloud-PG/XDC-AH-demo/master/templates/DODAS-TS/cms_cluster.yml) end to end deployment are available for real case scenario.
 
 ### Deploy K8d XCache service
 
-[xcache_service.yaml](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/k8s/xcache_service.yaml)
+[xcache_service.yaml](https://raw.githubusercontent.com/Cloud-PG/XDC-AH-demo/master/templates/k8s/xcache_service.yaml)
 
 ``` yaml
 kind: Service
@@ -54,7 +54,7 @@ spec:
 
 ### Deploy XCache redirector
 
-[redir-deployment.yaml](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/k8s/redir-deployment.yaml)
+[redir-deployment.yaml](https://raw.githubusercontent.com/Cloud-PG/XDC-AH-demo/master/templates/k8s/redir-deployment.yaml)
 
 ``` yaml
 apiVersion: apps/v1
@@ -104,7 +104,7 @@ spec:
 
 ### Deploy XCache servers
 
-[cache-deployment.yaml](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/k8s/cache-deployment.yaml)
+[cache-deployment.yaml](https://raw.githubusercontent.com/Cloud-PG/XDC-AH-demo/master/templates/k8s/cache-deployment.yaml)
 
 ``` yaml
 ---
@@ -190,7 +190,7 @@ spec:
 
 ### Deploy a client node + fake origin server
 
-[client_server-deployment.yaml](https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/k8s/client_server-deployment.yaml)
+[client_server-deployment.yaml](https://raw.githubusercontent.com/Cloud-PG/XDC-AH-demo/master/templates/k8s/client_server-deployment.yaml)
 
 ``` yaml
 apiVersion: apps/v1
@@ -237,7 +237,7 @@ For time reason of the demo a pre-installed origin server will be used as remote
 
 After the complete deployment, all the deployments should be green as in the figure below.
 
-[![k8s](img/k8s.png)](https://cloud-pg.github.io/XDC-HA-demo/img/k8s.png)
+[![k8s](img/k8s.png)](https://cloud-pg.github.io/XDC-AH-demo/img/k8s.png)
 
 We are going to do the following:
 
@@ -256,11 +256,10 @@ Additional:
 
 - [Mesos/Marathon equivalent with WN](http://90.147.75.180:8080/ui/#/apps)
 
-[![marathon](img/marathon.png)](https://cloud-pg.github.io/XDC-HA-demo/img/marathon.png)
+[![marathon](img/marathon.png)](https://cloud-pg.github.io/XDC-AH-demo/img/marathon.png)
 
 - copy file from XCACHE@CNAF and look at the [monitor page](https://193.204.89.68:3000/d/gZht3p4iz/infn-xcache-monitor)
 
   - need voms proxy ready on a vm
 
-[![k8s](img/graphana.png)](https://cloud-pg.github.io/XDC-HA-demo/img/graphana.png)
-
+[![k8s](img/graphana.png)](https://cloud-pg.github.io/XDC-AH-demo/img/graphana.png)
