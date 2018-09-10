@@ -22,7 +22,7 @@ Deployment recipes have been created for bot h K8s and Mesos/Marathon. The demo 
 
 - K8s pre-installed resources:
   - [TSystem](https://160.44.198.123:30443/#!/login)
-  - [cloud@CNAF](https://131.154.96.89:30443/#!/login)
+  - [cloud@CNAF](https://131.154.96.109:30443/#!/login)
 
 N.B. the whole set of intermediate step are executed manually just as demostrator. TOSCA templates for [K8s](https://raw.githubusercontent.com/Cloud-PG/XDC-AH-demo/master/templates/DODAS-TS/kube_deploy.yml) and [Mesos/Marathon](https://raw.githubusercontent.com/Cloud-PG/XDC-AH-demo/master/templates/DODAS-TS/cms_cluster.yml) _end to end deployment_ are available for real case scenario.
 
