@@ -4,7 +4,7 @@
 
 ### Objectives
 
-Demostrate an automatic deployment of a XCache cluster. In this demo we'll use a cloud provider which represent a typical opportunistic computing resource case. The context in which thiS solution is being tested is the CMS experiment.
+Demostrate an automatic deployment of a XCache cluster. In this demo we'll use a cloud provider which represent a typical opportunistic computing resource case and also for lightweight computing sites. The context in which thiS solution is being tested is the CMS experiment.
 
 ### What is going to be deployed
 
@@ -18,7 +18,7 @@ You can find below the yaml configuration files for the complete deployment on K
 
 ## XCache local deployment for opportunistic cloud resources
 
-The demo will make use of K8s:
+Deployment recipes have been created for bot h K8s and Mesos/Marathon. The demo will make use of the K8s' one:
 
 - K8s pre-installed resources:
   - [TSystem](https://160.44.198.123:30443/#!/login)
