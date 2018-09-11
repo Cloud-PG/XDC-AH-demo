@@ -259,6 +259,8 @@ Additional possibilities:
 
 - copy file from XCACHE@CNAF and look at the [monitor page](https://193.204.89.68:3000/d/gZht3p4iz/infn-xcache-monitor)
 
-  - need voms proxy ready on a vm
+  - need CMS voms proxy ready on a vm
 
 [![k8s](img/graphana.png)](https://cloud-pg.github.io/XDC-AH-demo/img/graphana.png)
+
+- [install on bare metal with ansible](https://cloud-pg.github.io/XDC-AH-demo/)
