@@ -13,7 +13,7 @@ spec:
         app: node
     spec:
       containers:
-      - name: clientAndServer
+      - name: client
         imagePullPolicy: Always
         args:
         - --nogrid

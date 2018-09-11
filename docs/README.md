@@ -181,7 +181,7 @@ spec:
     matchLabels:
       app: xcache
 
-  replicas: 3
+  replicas: 2
   volumes:
   - name: xcache-data
     hostPath:
@@ -207,7 +207,7 @@ spec:
         app: origin
     spec:
       containers:
-      - name: clientAndServer
+      - name: client
         imagePullPolicy: Always
         args:
         - --nogrid
