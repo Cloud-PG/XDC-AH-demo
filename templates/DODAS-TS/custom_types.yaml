@@ -1303,12 +1303,32 @@ node_types:
       redirector_ip:
         type: string
         required: yes
+      marathon_username:
+        type: string
+        required: no
+        default: 'Marathon-user'
+      marathon_password:
+        type: string
+        required: no
+        default: 'Marathon-passwd'
+      marathon_protocol:
+        type: string
+        required: no
+        default: 'http'
+      marathon_port:
+        type: integer
+        required: no
+        default: 8080
     interfaces:
       Standard:
         start:
           implementation: https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/Marathon/deploy-cache.yml
           inputs:
             redirector_ip: { get_property: [ SELF, redirector_ip ] }
+            marathon_protocol: { get_property: [ SELF, marathon_protocol ] }
+            marathon_port: { get_property: [ SELF, marathon_port ] }
+            marathon_user: { get_property: [ SELF, marathon_username ] }
+            marathon_pass: { get_property: [ SELF, marathon_password ] }
     requirements:
       - host:
           capability: tosca.capabilities.indigo.MesosMaster
