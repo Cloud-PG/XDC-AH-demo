@@ -1327,8 +1327,8 @@ node_types:
             redirector_ip: { get_property: [ SELF, redirector_ip ] }
             marathon_protocol: { get_property: [ SELF, marathon_protocol ] }
             marathon_port: { get_property: [ SELF, marathon_port ] }
-            marathon_user: { get_property: [ SELF, marathon_username ] }
-            marathon_pass: { get_property: [ SELF, marathon_password ] }
+            marathon_username: { get_property: [ SELF, marathon_username ] }
+            marathon_password: { get_property: [ SELF, marathon_password ] }
     requirements:
       - host:
           capability: tosca.capabilities.indigo.MesosMaster
