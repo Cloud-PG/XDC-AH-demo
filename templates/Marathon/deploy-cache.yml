@@ -2,6 +2,14 @@
 - hosts: localhost
   connection: local
   tasks:
+  - name: Download redir template 
+    get_url:
+      url: https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/Marathon/redirector.json
+      dest: /etc/redirector.json
+  - name: Download server template 
+    get_url:
+      url: https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/Marathon/server.json
+      dest: /etc/server.json
   - name: start xcache redirector
     run_once: true
     uri:
@@ -11,7 +19,7 @@
       validate_certs: "no"
       method: PUT
       HEADER_Content-Type: "application/json"
-      body: "{{ lookup('template', 'https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/Marathon/redirector.json') }}"
+      body: "{{ lookup('template', '/etc/redirector.json') }}"
       body_format: json
     register: result
     until: result.status == 200
@@ -28,7 +36,7 @@
       validate_certs: "no"
       method: PUT
       HEADER_Content-Type: "application/json"
-      body: "{{ lookup('template', 'https://raw.githubusercontent.com/Cloud-PG/XDC-HA-demo/master/templates/Marathon/server.json') }}"
+      body: "{{ lookup('template', '/etc/server.json') }}"
       body_format: json
     register: result
     until: result.status == 200
