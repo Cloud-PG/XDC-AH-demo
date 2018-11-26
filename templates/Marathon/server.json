@@ -1,7 +1,7 @@
 {
     "id": "/xrootdproxy",
     "cmd": null,
-    "cpus": 12,
+    "cpus": 1,
     "mem": 2000,
     "disk": 0,
     "instances": 1,
