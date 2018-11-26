@@ -6,10 +6,8 @@
     "disk": 0,
     "instances": 1,
     "constraints": [
-        [
-        "hostname",
-        "UNIQUE"
-        ]
+        ["hostname", "UNIQUE"],
+        ["hostname", "LIKE", "{{redirector_ip}}"]
     ],
     "acceptedResourceRoles": [
         "*"
