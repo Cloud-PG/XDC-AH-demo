@@ -22,7 +22,7 @@
         }
         ],
         "docker": {
-        "image": "cloudpg/xrootd-proxy:demo",
+        "image": "cloudpg/xrootd-proxy:cms",
         "network": "HOST",
         "portMappings": [],
         "privileged": true,
@@ -51,13 +51,13 @@
         "maxConsecutiveFailures": 3,
         "delaySeconds": 15,
         "command": {
-            "value": "curl -f -X GET http://localhost/check_health"
+            "value": "curl -f -X GET http://localhost:8081/check_health"
         },
         "protocol": "COMMAND"
         }
     ],
     "args": [
-        "-P"
+        "-P", "--health_port", "8081"
     ]
 }
   
