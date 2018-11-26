@@ -17,23 +17,8 @@
         "volumes": [],
         "docker": {
         "image": "cloudpg/xrootd-proxy:xcache",
-        "network": "BRIDGE",
-        "portMappings": [
-            {
-                "containerPort": 31213,
-                "hostPort": 0,
-                "labels": {},
-                "protocol": "tcp",
-                "servicePort": 31213
-            },
-            {
-                "containerPort": 31094,
-                "hostPort": 0,
-                "labels": {},
-                "protocol": "tcp",
-                "servicePort": 31094
-            }
-        ],
+        "network": "HOST",
+        "portMappings": [],
         "privileged": true,
         "parameters": [],
         "forcePullImage": true
